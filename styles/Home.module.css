@@ -40,10 +40,16 @@
 }
 
 .heroContent p {
-  font-size: 1.2rem;
+  margin: 0.25rem 0;  /* ✅ uniform small spacing between lines */
+  font-size: 1.1rem;
   color: #e0e0e0;
-  margin-bottom: 1.5rem;
 }
+
+/* optional: give a bit more breathing room below the tagline block */
+.heroContent p:last-of-type {
+  margin-bottom: 1rem;
+}
+
 
 .ctaButtons {
   display: flex;
@@ -209,11 +215,16 @@
 
   .heroContent {
     max-width: 100%;
+    white-space: normal;   /* ✅ allow wrapping */
+    overflow: visible;     /* ✅ stop cutting text */
   }
 
   .heroHeading {
     font-size: 2.2rem;
-    white-space: normal; /* allow wrapping on mobile */
+  }
+
+  .heroImage {
+    display: none; /* hides hero image on small screens */
   }
 
   .projectCards {
@@ -228,3 +239,5 @@
     flex-direction: column;
   }
 }
+
+
