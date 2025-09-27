@@ -1,6 +1,6 @@
-/* --- Global Page Styling --- */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400;500&display=swap');
 
+/* --- Global Page Styling --- */
 .main {
   width: 100%;
   background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
@@ -10,44 +10,45 @@
   padding: 2rem 0;
 }
 
-/* Inner container to align with navbar */
-.innerContainer {
-  max-width: 1200px;
-  width: 100%;
-  padding: 0 1.5rem; /* responsive padding */
+/* --- Hero Section --- */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+}
+
+.heroContent {
+  max-width: 600px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  white-space: nowrap; /* ensures text stays on a single line */
+  overflow: hidden;    /* prevents overflow */
+}
+
+.heroHeading {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-flex;
   align-items: center;
 }
 
-
-
-/* --- Hero Section --- */
-.hero {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  font-family: 'Orbitron', sans-serif;
-  background: linear-gradient(135deg, #00ffcc, #00b3b3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero p {
+.heroContent p {
   font-size: 1.2rem;
-  color: #b2fef7;
+  color: #e0e0e0;
+  margin-bottom: 1.5rem;
 }
 
 .ctaButtons {
   display: flex;
   gap: 1rem;
-  margin-top: 2rem;
-  justify-content: center;
+  align-items: center;
 }
 
 /* CTA Buttons */
@@ -57,22 +58,53 @@
   border-radius: 9999px;
   font-weight: 600;
   text-decoration: none;
-  color: #ffffff; /* always white */
-  background: #06b6d4; /* flat teal */
+  color: #ffffff;
+  background: #06b6d4; /* teal */
   box-shadow: 0 2px 6px rgba(6, 182, 212, 0.3);
   transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
   display: inline-block;
   text-align: center;
 }
 
-/* Hover effect */
 .ctaButton:hover,
 .resumeCTA:hover {
-  background: #0bc5c5; /* lighter teal for readability */
+  background: #0bc5c5; /* lighter teal */
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(6, 182, 212, 0.4);
-  color: #ffffff; /* force text to stay white */
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2); /* subtle shadow for contrast */
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Hero Image */
+.heroImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* prevents shrinking when text is long */
+}
+
+.heroAvatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid #06b6d4;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+}
+
+/* Blinking Cursor */
+.cursor {
+  width: 2px;
+  height: 1em;
+  background-color: #06b6d4;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  display: inline-block;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
 }
 
 /* --- Skills Section --- */
@@ -85,7 +117,7 @@
   font-size: 2rem;
   margin-bottom: 1.5rem;
   font-family: 'Orbitron', sans-serif;
-  color: #00ffe0;
+  color: #06b6d4; /* teal heading */
 }
 
 .skillBadges {
@@ -101,8 +133,8 @@
   border-radius: 9999px;
   font-weight: 500;
   font-size: 0.9rem;
-  color: #00ffe0;
-  box-shadow: 0 2px 8px rgba(0,255,204,0.5);
+  color: #06b6d4; /* teal badges */
+  box-shadow: 0 2px 8px rgba(6,182,212,0.5);
 }
 
 /* --- Projects Section --- */
@@ -115,10 +147,9 @@
   font-size: 2rem;
   margin-bottom: 1.5rem;
   font-family: 'Orbitron', sans-serif;
-  color: #00ffe0;
+  color: #06b6d4; /* teal heading */
 }
 
-/* Project Cards Container */
 .projectCards {
   display: flex;
   flex-wrap: wrap;
@@ -126,12 +157,11 @@
   gap: 2rem;
 }
 
-/* Individual Card Styling */
 .card {
   background: linear-gradient(145deg, #111111, #0d0d0d);
   padding: 1.5rem 2rem;
   border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 255, 204, 0.5);
+  box-shadow: 0 4px 20px rgba(6,182,212,0.5);
   text-align: center;
   transition: all 0.3s ease;
   width: 260px;
@@ -141,12 +171,12 @@
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 255, 204, 0.8);
+  box-shadow: 0 8px 25px rgba(6,182,212,0.8);
 }
 
 .card h3 {
   font-size: 1.3rem;
-  color: #00ffe0;
+  color: #06b6d4;
   margin-bottom: 0.5rem;
   font-family: 'Orbitron', sans-serif;
 }
@@ -158,31 +188,42 @@
 }
 
 .card a {
-  color: #00d1b2;
+  color: #06b6d4;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .card a:hover {
-  color: #00ffe0;
+  color: #0bc5c5;
   text-decoration: underline;
 }
 
-/* --- Responsive Styling --- */
+/* --- Responsive --- */
 @media (max-width: 768px) {
-  .hero h1 {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .heroContent {
+    max-width: 100%;
+  }
+
+  .heroHeading {
     font-size: 2.2rem;
+    white-space: normal; /* allow wrapping on mobile */
   }
-  .hero p {
-    font-size: 1rem;
-  }
+
   .projectCards {
     gap: 1.2rem;
   }
+
   .card {
     width: 100%;
   }
+
   .ctaButtons {
     flex-direction: column;
   }
