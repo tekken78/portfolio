@@ -9,9 +9,6 @@ export async function POST(req: NextRequest) {
     if (!name || !email || !message) {
       return new Response(JSON.stringify({ success: false, message: 'Missing fields' }), { status: 400 });
     }
-    console.log('EMAIL_USER:', process.env.EMAIL_USER);
-console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? '******' : 'undefined');
-
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
