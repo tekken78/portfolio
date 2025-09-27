@@ -1,0 +1,111 @@
+.timelineSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem;
+}
+
+.timelineTitle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: #06b6d4;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 900px;
+}
+
+.timelineBar {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #06b6d4;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.timelineItem {
+  position: relative;
+  width: 45%;
+  padding: 1rem 2rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(145deg, #111, #0d0d0d);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.5);
+  z-index: 1;
+}
+
+.timelineItem.left {
+  align-self: flex-start;
+  text-align: right;
+}
+
+.timelineItem.right {
+  align-self: flex-end;
+  text-align: left;
+}
+
+.timelineItem .dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #06b6d4;
+  border-radius: 50%;
+  top: 1rem;
+  z-index: 2;
+  border: 2px solid #111;
+}
+
+.timelineItem.left .dot {
+  right: -8px;
+}
+
+.timelineItem.right .dot {
+  left: -8px;
+}
+
+/* Card content */
+.timelineItem h3 {
+  color: #06b6d4;
+  margin-bottom: 0.5rem;
+}
+
+.timelineItem h4 {
+  color: #b2fef7;
+  margin-bottom: 0.3rem;
+}
+
+.timelineItem p {
+  color: #e0f7fa;
+  font-size: 0.9rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .timelineItem,
+  .timelineItem.left,
+  .timelineItem.right {
+    width: 90%;
+    align-self: flex-start;
+    text-align: left;
+    margin-left: 2rem;
+  }
+
+  .timelineItem .dot {
+    left: -8px !important;
+  }
+
+  .timelineBar {
+    left: 2rem;
+  }
+}

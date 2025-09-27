@@ -1,64 +1,136 @@
-.aboutContainer {
-  max-width: 800px;
+.aboutSection {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  padding: 2rem 1.5rem;
+  font-family: 'Roboto Mono', monospace;
+  color: #e0f7fa;
 }
 
-/* Bio Card */
-.bioCard {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.bioCard h2 {
+.aboutSection h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: #06b6d4;
   margin-bottom: 1rem;
-  color: #1976d2;
 }
 
-.bioCard p {
-  color: #555;
+.aboutSection p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.aboutSection h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  color: #06b6d4;
+  margin-bottom: 1rem;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skillPill {
+  position: relative;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #0d0d0d, #111111);
+  border-radius: 9999px;
+  color: #06b6d4;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: default;
+  box-shadow: 0 2px 6px rgba(6,182,212,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+/* Hover effects */
+.skillPill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(6,182,212,0.6);
+}
+
+/* Tooltip for percentage */
+.skillPill::after {
+  content: attr(data-percentage) '%';
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  background: linear-gradient(135deg, #06b6d4, #0bc5c5);
+  color: #111;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.skillPill:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Entrance animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skillsContainer {
+    justify-content: center;
+  }
+}
+
+/* Card for About Me paragraph */
+.aboutCard {
+  background: linear-gradient(145deg, #111111, #0d0d0d);
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(6,182,212,0.5);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #e0f7fa;
+}
+
+/* Optional: add subtle hover lift */
+.aboutCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(6,182,212,0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* About list styling */
+.aboutList {
+  list-style: disc;
+  padding-left: 1.5rem;
+  font-size: 1.1rem;
   line-height: 1.6;
 }
 
-/* Skills Card */
-.skillsCard {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+.aboutList li {
+  margin-bottom: 0.8rem;
 }
 
-.skillsCard h3 {
-  margin-bottom: 1rem;
-  color: #1976d2;
+/* Optional hover effect */
+.aboutCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(6,182,212,0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.skillsList {
-  list-style: disc;
-  padding-left: 1.5rem;
-  color: #555;
-}
-
-/* Highlights Card */
-.highlightsCard {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.highlightsCard h3 {
-  margin-bottom: 1rem;
-  color: #1976d2;
-}
-
-.highlightsList {
-  list-style: disc;
-  padding-left: 1.5rem;
-  color: #555;
-}

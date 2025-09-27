@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import styles from '../styles/Home.module.css';
+import Experience from '@/components/Experience';
 
 export default function Home() {
   const fullText = "Hi, I'm Sahil Kumar";
@@ -26,8 +27,6 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  const skills = ['Kafka', 'AWS', 'Terraform', 'Vector DB', 'SQL', 'Java', 'Micronaut', 'Kubernetes'];
-
   const projects = [
     { title: 'Portfolio Website', description: 'My personal portfolio built with Next.js and CSS Modules.', link: 'https://github.com/tekken78/portfolio' },
     { title: 'Task Manager App', description: 'A full-stack task management app with Node.js backend.', link: '#' },
@@ -42,7 +41,7 @@ export default function Home() {
             {displayedText}
             {showCursor && <span className={styles.cursor}></span>}
           </h1>
-          <p>Backend developer | Oracle</p>
+          <p>Senior Member of Technical Staff | Oracle</p>
           <p>Travel enthusiast</p>
           <div className={styles.ctaButtons}>
             <a href="/contact" className={styles.ctaButton}>Get in Touch</a>
@@ -54,14 +53,7 @@ export default function Home() {
           <Image src="/profile.jpg" alt="Sahil Kumar" width={180} height={180} className={styles.heroAvatar} />
         </div>
       </section>
-
-      <section className={styles.skills}>
-        <h2>My Skills</h2>
-        <div className={styles.skillBadges}>
-          {skills.map((skill) => <span key={skill}>{skill}</span>)}
-        </div>
-      </section>
-
+      <Experience /> 
       <section className={styles.projects}>
         <h2>Featured Projects</h2>
         <div className={styles.projectCards}>
