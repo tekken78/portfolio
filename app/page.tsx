@@ -42,7 +42,8 @@ export default function Home() {
             {displayedText}
             {showCursor && <span className={styles.cursor}></span>}
           </h1>
-          <p>Backend developer | Travel enthusiast</p>
+          <p>Backend developer | Oracle</p>
+          <p>Travel enthusiast</p>
           <div className={styles.ctaButtons}>
             <a href="/contact" className={styles.ctaButton}>Get in Touch</a>
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className={styles.resumeCTA}>Resume</a>
