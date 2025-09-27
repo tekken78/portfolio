@@ -1,0 +1,8 @@
+.sectionTitle {
+  font-family: 'Orbitron', sans-serif;  /* Heading font */
+  color: #06b6d4;                       /* Teal */
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}

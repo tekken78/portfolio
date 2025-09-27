@@ -1,20 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400;500&display=swap');
+
 .contactContainer {
-  max-width: 600px;
+  max-width: 900px;
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto Mono', monospace;
+  color: #e0f7fa;
 }
 
 .contactIntro {
+  text-align: center;
+  font-size: 1.1rem;
   margin-bottom: 2rem;
-  color: #555;
+  line-height: 1.6;
 }
 
 .card {
-  background-color: #fff;
+  background: linear-gradient(145deg, #111111, #0d0d0d);
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(6,182,212,0.5);
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 3rem;
 }
 
 .contactForm {
@@ -23,79 +35,131 @@
   gap: 1.5rem;
 }
 
-/* Floating labels */
 .inputGroup {
   position: relative;
-  display: flex;
-  flex-direction: column-reverse;
+  width: 100%;
 }
 
 .inputGroup input,
 .inputGroup textarea {
   width: 100%;
-  padding: 1rem 0.75rem 0.25rem 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  outline: none;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #06b6d4;
+  background-color: #111111;
+  color: #e0f7fa;
+  font-family: 'Roboto Mono', monospace;
   font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .inputGroup label {
   position: absolute;
-  left: 0.75rem;
-  top: 1rem;
-  font-size: 1rem;
-  color: #999;
-  pointer-events: none;
-  transition: all 0.2s ease-out;
+  top: -10px;
+  left: 12px;
+  background: #111111;
+  padding: 0 4px;
+  font-size: 0.85rem;
+  color: #06b6d4;
+  font-family: 'Orbitron', sans-serif;
 }
 
-.inputGroup input:focus + label,
-.inputGroup input:not(:placeholder-shown) + label,
-.inputGroup textarea:focus + label,
-.inputGroup textarea:not(:placeholder-shown) + label {
-  top: -0.5rem;
-  left: 0.5rem;
-  font-size: 0.8rem;
-  color: #1976d2;
-  background-color: #fff;
-  padding: 0 0.25rem;
-}
-
-/* Button */
-.contactForm button {
-  background-color: #1976d2;
-  color: #fff;
-  border: none;
+.submitButton {
   padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.2s, transform 0.2s;
+  font-weight: 600;
+  color: #06b6d4;
+  background: #0a0a0a;
+  border: 2px solid #06b6d4;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: center;
 }
 
-.contactForm button:hover {
-  background-color: #0d47a1;
+.submitButton:hover {
+  background: #06b6d4;
+  color: #0a0a0a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(6,182,212,0.4);
+}
+
+.socialLinks {
+  text-align: center;
+}
+
+.socialLinks h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  color: #06b6d4;
+  margin-bottom: 1rem;
+}
+
+.socialLinks .links {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.socialLinks a {
+  font-family: 'Roboto Mono', monospace;
+  color: #06b6d4;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.socialLinks a:hover {
+  color: #0bc5c5;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .contactContainer {
+    padding: 1.5rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .socialLinks .links {
+    gap: 1rem;
+  }
+}
+
+
+.toastSuccess {
+  color: #0bc5c5;
+  font-weight: 600;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.toastError {
+  color: #ff6b6b;
+  font-weight: 600;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.socialLinks .links a {
+  font-family: 'Roboto Mono', monospace;
+  color: #06b6d4; /* teal */
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.socialLinks .links a:hover {
+  color: #0bc5c5; /* lighter teal on hover */
   transform: translateY(-2px);
 }
 
-/* Social Links */
-.socialLinks h3 {
-  margin-bottom: 0.75rem;
-}
-
-.links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.links a {
-  color: #1976d2;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.links a:hover {
-  text-decoration: underline;
+.socialLinks .links svg {
+  width: 20px;
+  height: 20px;
 }
