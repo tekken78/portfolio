@@ -1,0 +1,120 @@
+/* Base navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Logo */
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+.avatarWrapper {
+  display: flex;
+  align-items: center;
+}
+.avatar {
+  border-radius: 50%;
+  border: 2px solid #1976d2;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+.logoLink span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1976d2;
+  line-height: 1;
+}
+
+/* Desktop Links */
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.navLinks a {
+  position: relative;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  padding-bottom: 4px;
+  transition: color 0.2s;
+}
+.navLinks a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #1976d2;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+.navLinks a:hover::after,
+.navLinks a.active::after {
+  width: 100%;
+  left: 0;
+}
+.navLinks a:hover {
+  color: #1976d2;
+}
+
+/* Hamburger Button */
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.hamburgerIcon {
+  width: 24px;
+  height: 24px;
+  color: #1976d2;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  display: none;
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+  .mobileMenuButton {
+    display: block;
+  }
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 70px; /* below navbar */
+    right: 1rem;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+  .mobileMenu a {
+    color: #555;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .mobileMenu a.active {
+    color: #1976d2;
+    border-bottom: 2px solid #1976d2;
+    padding-bottom: 2px;
+  }
+}
