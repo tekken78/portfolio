@@ -16,62 +16,54 @@ export default function Navbar() {
     { name: 'About', path: '/about' },
     { name: 'Projects', path: '/projects' },
     { name: 'Contact', path: '/contact' },
-    { name: 'Resume', path: '/resume.pdf', external: true }, // ✅ Resume added
+    { name: 'Resume', path: '/resume.pdf', external: true },
   ];
 
   return (
     <nav className={styles.navbar}>
       <Link href="/" className={styles.logoLink}>
-        <div className={styles.avatarWrapper}>
-          <Image
-            src="/profile.jpg"
-            alt="Sahil Kumar"
-            width={40}
-            height={40}
-            className={styles.avatar}
-          />
-        </div>
+        <Image
+          src="/profile.jpg"
+          alt="Sahil Kumar"
+          width={40}
+          height={40}
+          className={styles.avatar}
+        />
         <span>Sahil Kumar</span>
       </Link>
 
       {/* Desktop Links */}
-<ul className={styles.navLinks}>
-  {navLinks.map((link) => (
-    <li key={link.name}>
-      {link.external ? (
-        <a
-          href={link.path}
-          download
-          className={styles.resumeButton}      // <-- class applied here
-        >
-          Resume
-        </a>
-      ) : (
-        <Link
-          href={link.path}
-          className={`${styles.navLink ?? ''} ${pathname === link.path ? styles.active : ''}`}
-        >
-          {link.name}
-        </Link>
-      )}
-    </li>
-  ))}
-</ul>
+      <ul className={styles.navLinks}>
+        {navLinks.map((link) => (
+          <li key={link.name}>
+            {link.external ? (
+              <a
+                href={link.path}
+                download
+                className={styles.resumeButton}
+              >
+                {link.name}
+              </a>
+            ) : (
+              <Link
+                href={link.path}
+                className={`${pathname === link.path ? styles.active : ''}`}
+              >
+                {link.name}
+              </Link>
+            )}
+          </li>
+        ))}
+      </ul>
 
-
-      {/* Hamburger Button */}
+      {/* Mobile Menu */}
       <button
         className={styles.mobileMenuButton}
         onClick={() => setMobileOpen(!mobileOpen)}
       >
-        {mobileOpen ? (
-          <XMarkIcon className={styles.hamburgerIcon} />
-        ) : (
-          <Bars3Icon className={styles.hamburgerIcon} />
-        )}
+        {mobileOpen ? <XMarkIcon className={styles.hamburgerIcon} /> : <Bars3Icon className={styles.hamburgerIcon} />}
       </button>
 
-      {/* Mobile Menu */}
       {mobileOpen && (
         <ul className={styles.mobileMenu}>
           {navLinks.map((link) => (
@@ -80,7 +72,6 @@ export default function Navbar() {
                 <a
                   href={link.path}
                   download
-                  className={styles.active}
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.name}
@@ -88,8 +79,8 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.path}
-                  className={pathname === link.path ? styles.active : ''}
                   onClick={() => setMobileOpen(false)}
+                  className={pathname === link.path ? styles.active : ''}
                 >
                   {link.name}
                 </Link>
