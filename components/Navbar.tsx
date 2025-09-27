@@ -16,6 +16,7 @@ export default function Navbar() {
     { name: 'About', path: '/about' },
     { name: 'Projects', path: '/projects' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Resume', path: '/resume.pdf', external: true }, // ✅ Resume added
   ];
 
   return (
@@ -34,43 +35,65 @@ export default function Navbar() {
       </Link>
 
       {/* Desktop Links */}
-      <ul className={styles.navLinks}>
-        {navLinks.map((link) => (
-          <li key={link.path}>
-            <Link
-              href={link.path}
-              className={pathname === link.path ? styles.active : ''}
-            >
-              {link.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+<ul className={styles.navLinks}>
+  {navLinks.map((link) => (
+    <li key={link.name}>
+      {link.external ? (
+        <a
+          href={link.path}
+          download
+          className={styles.resumeButton}      // <-- class applied here
+        >
+          Resume
+        </a>
+      ) : (
+        <Link
+          href={link.path}
+          className={`${styles.navLink ?? ''} ${pathname === link.path ? styles.active : ''}`}
+        >
+          {link.name}
+        </Link>
+      )}
+    </li>
+  ))}
+</ul>
+
 
       {/* Hamburger Button */}
       <button
-  className={styles.mobileMenuButton}
-  onClick={() => setMobileOpen(!mobileOpen)}
->
-  {mobileOpen ? (
-    <XMarkIcon className={styles.hamburgerIcon} />
-  ) : (
-    <Bars3Icon className={styles.hamburgerIcon} />
-  )}
-</button>
+        className={styles.mobileMenuButton}
+        onClick={() => setMobileOpen(!mobileOpen)}
+      >
+        {mobileOpen ? (
+          <XMarkIcon className={styles.hamburgerIcon} />
+        ) : (
+          <Bars3Icon className={styles.hamburgerIcon} />
+        )}
+      </button>
 
       {/* Mobile Menu */}
       {mobileOpen && (
         <ul className={styles.mobileMenu}>
           {navLinks.map((link) => (
-            <li key={link.path}>
-              <Link
-                href={link.path}
-                className={pathname === link.path ? styles.active : ''}
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.name}
-              </Link>
+            <li key={link.name}>
+              {link.external ? (
+                <a
+                  href={link.path}
+                  download
+                  className={styles.active}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  href={link.path}
+                  className={pathname === link.path ? styles.active : ''}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
