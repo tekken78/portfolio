@@ -1,0 +1,136 @@
+/* Blog.module.css */
+
+/* Container for all blog-related pages */
+.blogContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  font-family: 'Roboto Mono', monospace;
+  color: #e0f7fa;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Page title */
+.pageTitle,
+.blogTitle {
+  font-family: 'Orbitron', sans-serif;
+  color: #06b6d4;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Blog post date */
+.blogDate {
+  font-size: 0.85rem;
+  color: #b2fef7;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Grid for multiple blog posts */
+.postsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Individual blog card */
+.card {
+  background: linear-gradient(145deg, #111111, #0d0d0d);
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(6,182,212,0.5);
+  width: 320px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(6,182,212,0.7);
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  color: #06b6d4;
+  margin-bottom: 0.5rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.cardExcerpt {
+  color: #b2fef7;
+  font-size: 0.95rem;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.readMore {
+  align-self: center; /* ensures uniform positioning */
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  text-decoration: none;
+  background: #06b6d4;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.readMore:hover {
+  background: #0bc5c5;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(6,182,212,0.5);
+}
+
+/* Full blog post styles */
+.blogPost {
+  background: linear-gradient(145deg, #111111, #0d0d0d);
+  padding: 2rem 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(6,182,212,0.5);
+  line-height: 1.8;
+}
+
+.blogPost p {
+  margin-bottom: 1rem;
+  color: #e0f7fa;
+}
+
+.blogPost h2, .blogPost h3, .blogPost h4 {
+  color: #06b6d4;
+  margin-bottom: 0.5rem;
+}
+
+.notFound {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ff6b6b;
+  margin-top: 3rem;
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #b2fef7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .postsGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card,
+  .blogPost {
+    width: 90%;
+    padding: 1.5rem;
+  }
+}
