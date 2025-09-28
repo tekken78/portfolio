@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import ProjectCard from '../../components/ProjectCard';
 import styles from '../../styles/Projects.module.css';
 
 const projects = [
@@ -23,12 +23,6 @@ const projects = [
     link: '#',
     tech: ['Next.js', 'Markdown', 'SSR'],
   },
-  {
-    title: 'E-commerce Store',
-    description: 'A complete e-commerce solution with shopping cart and payment integration.',
-    link: '#',
-    tech: ['React', 'Stripe', 'Firebase'],
-  },
 ];
 
 export default function Projects() {
@@ -38,40 +32,13 @@ export default function Projects() {
   return (
     <main className={styles.projectsContainer}>
       <h1 className={styles.pageTitle}>Featured Projects</h1>
-
       <div className={styles.featuredGrid}>
-        {featuredProjects.map((project) => (
-          <div key={project.title} className={styles.featuredCard}>
-            <h2>{project.title}</h2>
-            <p>{project.description}</p>
-            <div className={styles.techStack}>
-              {project.tech.map((tech) => (
-                <span key={tech} className={styles.techBadge}>{tech}</span>
-              ))}
-            </div>
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className={styles.viewButton}>
-              View Project
-            </a>
-          </div>
-        ))}
+        {featuredProjects.map(p => <ProjectCard key={p.title} {...p} />)}
       </div>
 
       <h1 className={styles.pageTitle}>Other Projects</h1>
       <div className={styles.projectGrid}>
-        {regularProjects.map((project) => (
-          <div key={project.title} className={styles.projectCard}>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <div className={styles.techStack}>
-              {project.tech.map((tech) => (
-                <span key={tech} className={styles.techBadge}>{tech}</span>
-              ))}
-            </div>
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className={styles.viewButton}>
-              View Project
-            </a>
-          </div>
-        ))}
+        {regularProjects.map(p => <ProjectCard key={p.title} {...p} />)}
       </div>
     </main>
   );

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import styles from '../styles/Home.module.css';
 import Experience from '@/components/Experience';
+import ProjectCard from '@/components/ProjectCard';
 
 export default function Home() {
   const fullText = "Hi, I'm Sahil Kumar";
@@ -27,11 +28,26 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  const projects = [
-    { title: 'Portfolio Website', description: 'My personal portfolio built with Next.js and CSS Modules.', link: 'https://github.com/tekken78/portfolio' },
-    { title: 'Task Manager App', description: 'A full-stack task management app with Node.js backend.', link: '#' },
-    { title: 'Blog Platform', description: 'Next.js blog platform with markdown support and SSR.', link: '#' },
-  ];
+const projects = [
+  {
+    title: 'Portfolio Website',
+    description: 'My personal portfolio built with Next.js, React, and CSS Modules.',
+    link: 'https://github.com/tekken78/portfolio',
+    tech: ['Next.js', 'React', 'CSS Modules'],
+  },
+  {
+    title: 'Task Manager App',
+    description: 'Full-stack task management app with Node.js backend and MongoDB.',
+    link: '#',
+    tech: ['Node.js', 'MongoDB', 'Express'],
+  },
+  {
+    title: 'Blog Platform',
+    description: 'Next.js blog platform with markdown support and server-side rendering.',
+    link: '#',
+    tech: ['Next.js', 'Markdown', 'SSR'],
+  },
+];
 
   return (
     <main className={styles.main}>
@@ -54,11 +70,14 @@ export default function Home() {
       </section>
       <Experience /> 
       <section className={styles.projects}>
-        <h2>Featured Projects</h2>
-        <div className={styles.projectCards}>
-          {projects.map((project) => <Card key={project.title} {...project} />)}
-        </div>
-      </section>
+  <h2 className={styles.pageTitle}>Featured Projects</h2>
+  <div className={styles.projectCards}>
+    {projects.map((project) => (
+      <ProjectCard key={project.title} {...project} />
+    ))}
+  </div>
+</section>
+
     </main>
   );
 }
