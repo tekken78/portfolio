@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@portabletext/react": "^2.3.0",
+    "next-sanity": "^4.1.0",
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.1.13",
     "framer-motion": "^12.23.22",
