@@ -18,7 +18,7 @@ export default function Home() {
         if (!nextChar) {
           clearInterval(interval);
           setShowCursor(false);
-          return prev; // typing finished
+          return prev;
         }
         return prev + nextChar;
       });
@@ -41,8 +41,7 @@ export default function Home() {
             {displayedText}
             {showCursor && <span className={styles.cursor}></span>}
           </h1>
-          <p>Senior Member of Technical Staff | Oracle</p>
-          <p>Travel enthusiast</p>
+          <p>Engineering the backend, inspired by the world.</p>
           <div className={styles.ctaButtons}>
             <a href="/contact" className={styles.ctaButton}>Get in Touch</a>
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className={styles.resumeCTA}>Resume</a>

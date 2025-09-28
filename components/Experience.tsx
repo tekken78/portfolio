@@ -13,25 +13,31 @@ const experiences = [
     title: 'Senior Member of Technical Staff',
     company: 'Oracle',
     duration: 'Oct 2024 - Present',
-    description: 'Built microservices using Java and Micronaut on AWS.',
+    description: '',
   },
   {
     title: 'Lead Software Engineer',
     company: 'Fidelity Investments',
     duration: 'Oct 2023 - Sept 2024',
-    description: 'Worked on Kafka pipelines and SQL optimization.',
+    description: 'Built a high-throughput Kafka system with Spring Boot 3, processing 20M+ real-time events daily with zero data loss.',
   },
   {
     title: 'Software Engineer',
     company: 'Fidelity Investments',
-    duration: 'Aug 2019 - Sept 2024',
-    description: 'Worked on Kafka pipelines and SQL optimization.',
+    duration: 'Sept 2020 - Sept 2023',
+    description: 'Developed Spring Boot APIs and microservices on APIGEE, powering cloud-based trade processing for 10M+ rows securely.',
+  },
+  {
+    title: 'Associate Software Engineer',
+    company: 'Fidelity Investments',
+    duration: 'Aug 2019 - Aug 2020',
+    description: 'Built high-performance batch processing applications with Spring Batch, optimized databases, and automated CI/CD with Jenkins.',
   },
   {
     title: 'Summer Intern',
     company: 'Deloitte',
     duration: 'May 2018 - July 2018',
-    description: 'Contributed to Terraform automation and cloud setup.',
+    description: 'Created insightful Power BI reports using SQL and Oracle Cloud tools to drive data-driven decisions.',
   },
 ];
 
