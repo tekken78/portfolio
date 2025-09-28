@@ -1,0 +1,74 @@
+.card {
+  background: linear-gradient(145deg, #111111, #0d0d0d);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(6,182,212,0.5);
+  width: 320px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(6,182,212,0.7);
+}
+
+.card h3 {
+  color: #06b6d4;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;         /* increased from 1.3rem */
+  letter-spacing: 0.5px;     /* subtle spacing for emphasis */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* optional highlight effect */
+}
+
+
+.card p {
+  color: #b2fef7;
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+/* Tech Stack Badges */
+.techStack {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.techBadge {
+  background: linear-gradient(135deg, #0d0d0d, #111111);
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #06b6d4;
+  box-shadow: 0 2px 6px rgba(6,182,212,0.3);
+}
+
+/* View Project Button */
+.viewButton {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background: linear-gradient(135deg, #06b6d4, #0bc5c5);
+  color: #111;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  text-align: center;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(6,182,212,0.4);
+}
+
+.viewButton:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(6,182,212,0.6);
+  background: linear-gradient(135deg, #0bc5c5, #06b6d4);
+  color: #fff;
+}
