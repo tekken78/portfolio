@@ -11,57 +11,99 @@
   font-size: 2rem;
   color: #06b6d4;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
-.aboutSection p {
+/* About Me Card */
+.aboutCard {
+  background: linear-gradient(145deg, #111111, #0d0d0d);
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(6,182,212,0.5);
+  margin-bottom: 2rem;
   font-size: 1.1rem;
   line-height: 1.6;
-  margin-bottom: 2rem;
+  color: #e0f7fa;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.aboutSection h3 {
+.aboutCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(6,182,212,0.6);
+}
+
+.aboutList {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.aboutList li {
+  margin-bottom: 0.8rem;
+}
+
+/* Skills Cards Layout */
+.skillsCards {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.skillCard {
+  flex: 1 1 40%;
+  background: linear-gradient(145deg, #111111, #0d0d0d);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(6,182,212,0.5);
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skillCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(6,182,212,0.6);
+}
+
+.skillCard h3 {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.5rem;
-  color: #06b6d4;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
+  color: currentColor;
+  text-align: center;
 }
 
+/* Skills Container & Pills */
 .skillsContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  justify-content: center;
 }
 
 .skillPill {
   position: relative;
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, #0d0d0d, #111111);
   border-radius: 9999px;
-  color: #06b6d4;
   font-weight: 500;
   font-size: 0.9rem;
   cursor: default;
-  box-shadow: 0 2px 6px rgba(6,182,212,0.5);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: fadeInUp 0.5s ease forwards;
   opacity: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Hover effects */
+/* Hover effect */
 .skillPill:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(6,182,212,0.6);
 }
 
-/* Tooltip for percentage */
+/* Tooltip */
 .skillPill::after {
   content: attr(data-percentage) '%';
   position: absolute;
   bottom: 125%;
   left: 50%;
   transform: translateX(-50%) translateY(5px);
-  background: linear-gradient(135deg, #06b6d4, #0bc5c5);
-  color: #111;
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.75rem;
@@ -75,6 +117,38 @@
 .skillPill:hover::after {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+/* Tech Card Theme */
+.techCard {
+  color: #06b6d4;
+}
+
+.techCard .skillPill {
+  background: linear-gradient(135deg, #0d0d0d, #111111);
+  color: #e0f7fa;
+  box-shadow: 0 2px 6px rgba(6,182,212,0.5);
+}
+
+.techCard .skillPill::after {
+  background: linear-gradient(135deg, #06b6d4, #0bc5c5);
+  color: #111;
+}
+
+/* Non-Tech Card Theme */
+.nonTechCard {
+  color: #a78bfa;
+}
+
+.nonTechCard .skillPill {
+  background: linear-gradient(135deg, #1a0d1a, #111111);
+  color: #e0f7fa;
+  box-shadow: 0 2px 6px rgba(167,139,250,0.5);
+}
+
+.nonTechCard .skillPill::after {
+  background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+  color: #111;
 }
 
 /* Entrance animation */
@@ -91,46 +165,12 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .skillsContainer {
-    justify-content: center;
+  .skillsCards {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .skillCard {
+    flex: 1 1 100%;
   }
 }
-
-/* Card for About Me paragraph */
-.aboutCard {
-  background: linear-gradient(145deg, #111111, #0d0d0d);
-  padding: 1.5rem 2rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(6,182,212,0.5);
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #e0f7fa;
-}
-
-/* Optional: add subtle hover lift */
-.aboutCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(6,182,212,0.6);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* About list styling */
-.aboutList {
-  list-style: disc;
-  padding-left: 1.5rem;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.aboutList li {
-  margin-bottom: 0.8rem;
-}
-
-/* Optional hover effect */
-.aboutCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(6,182,212,0.6);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-

@@ -1,3 +1,4 @@
+/* --- Container --- */
 .projectsContainer {
   max-width: 1200px;
   margin: 0 auto;
@@ -9,6 +10,7 @@
   color: #e0f7fa;
 }
 
+/* --- Page Titles --- */
 .pageTitle {
   font-family: 'Orbitron', sans-serif;
   font-size: 2rem;
@@ -17,7 +19,7 @@
   text-align: center;
 }
 
-/* Featured Project Grid */
+/* --- Featured Project Grid --- */
 .featuredGrid {
   display: flex;
   gap: 2rem;
@@ -54,7 +56,7 @@
   font-size: 0.95rem;
 }
 
-/* Tech Stack Badges */
+/* --- Tech Stack Badges --- */
 .techStack {
   display: flex;
   gap: 0.5rem;
@@ -71,7 +73,7 @@
   box-shadow: 0 2px 6px rgba(6,182,212,0.3);
 }
 
-/* View Project Button */
+/* --- View Project Button --- */
 .viewButton {
   padding: 0.5rem 1.2rem;
   border-radius: 9999px;
@@ -89,7 +91,7 @@
   box-shadow: 0 4px 8px rgba(6,182,212,0.4);
 }
 
-/* Regular Project Grid */
+/* --- Regular Project Grid --- */
 .projectGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -123,7 +125,7 @@
   font-size: 0.9rem;
 }
 
-/* Responsive */
+/* --- Responsive --- */
 @media (max-width: 768px) {
   .featuredGrid {
     flex-direction: column;

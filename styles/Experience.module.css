@@ -108,4 +108,15 @@
   .timelineBar {
     left: 2rem;
   }
+
+    .timelineItem {
+    width: 90%;
+    left: 0 !important;
+    margin: 1rem auto;
+  }
+
+  .timelineItem::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
