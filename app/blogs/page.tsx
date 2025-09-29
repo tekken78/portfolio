@@ -2,10 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import styles from '@/styles/Blog.module.css';
-import { client } from '@/sanity/lib/client';
-import { PortableText } from '@portabletext/react';
 
-// Minimal types for Portable Text blocks we expect
+// Minimal types for Portable Text blocks
 type PTChild = { text?: string };
 type PTBlock = { _type?: string; children?: PTChild[] };
 
@@ -17,6 +15,11 @@ type BlogPost = {
   publishedAt?: string;
   content?: PTBlock[];
   excerpt?: string;
+  coverImage?: {
+    _type: 'image';
+    asset: { _ref?: string; _id?: string; url?: string };
+    alt?: string;
+  };
 };
 
 export default function BlogPage() {
@@ -33,7 +36,20 @@ export default function BlogPage() {
       return;
     }
 
-    const groq = `*[_type == "blog"]{_id,title,slug,publishedAt,excerpt,content}`;
+    const groq = `*[_type == "blog"]{
+      _id,
+      title,
+      slug,
+      publishedAt,
+      excerpt,
+      content,
+      coverImage{
+        asset->{
+          url
+        }
+      }
+    }`;
+
     const url = `https://${projectId}.api.sanity.io/v2023-10-21/data/query/${dataset}?query=${encodeURIComponent(
       groq
     )}`;
@@ -52,12 +68,15 @@ export default function BlogPage() {
     return paragraphs.join(' ').replace(/\s+/g, ' ').trim();
   }
 
-  function getExcerpt(post: BlogPost, max = 160) {
-    if (post.excerpt && post.excerpt.trim().length) return post.excerpt.trim();
+  function getExcerpt(post: BlogPost, max = 160, shorter = false) {
+    const limit = shorter ? 80 : max;
+    if (post.excerpt && post.excerpt.trim().length) {
+      return post.excerpt.trim().slice(0, limit) + (post.excerpt.length > limit ? '…' : '');
+    }
     const text = extractTextFromPortableText(post.content);
     if (!text) return 'No excerpt available.';
-    if (text.length <= max) return text;
-    const cut = text.slice(0, max);
+    if (text.length <= limit) return text;
+    const cut = text.slice(0, limit);
     return cut.slice(0, cut.lastIndexOf(' ')) + '…';
   }
 
@@ -69,19 +88,32 @@ export default function BlogPage() {
         <p className={styles.loading}>Loading posts…</p>
       ) : (
         <div className={styles.postsGrid}>
-          {posts.map((post) => (
-            <article key={post._id} className={styles.card}>
-              <h2 className={styles.cardTitle}>{post.title}</h2>
+          {posts.map((post) => {
+            const hasImage = !!post.coverImage?.asset?.url;
+            return (
+              <article key={post._id} className={styles.card}>
+                {post.coverImage?.asset?.url && (
+                  <img
+                    src={post.coverImage.asset.url}
+                    alt={post.coverImage.alt || post.title}
+                    className={styles.cardImage}
+                  />
+                )}
 
-              <p className={styles.cardExcerpt}>{getExcerpt(post)}</p>
+                <h2 className={styles.cardTitle}>{post.title}</h2>
 
-              {post.slug?.current && (
-                <a className={styles.readMore} href={`/blogs/${post.slug.current}`}>
-                  Read More →
-                </a>
-              )}
-            </article>
-          ))}
+                <p className={styles.cardExcerpt}>
+                  {getExcerpt(post, 160, hasImage)}
+                </p>
+
+                {post.slug?.current && (
+                  <a className={styles.readMore} href={`/blogs/${post.slug.current}`}>
+                    Read More →
+                  </a>
+                )}
+              </article>
+            );
+          })}
         </div>
       )}
     </main>
