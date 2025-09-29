@@ -1,10 +1,7 @@
-'use client';
-
-import { PortableText } from '@portabletext/react';
-import { client } from '@/sanity/lib/client';
-import styles from '@/styles/Blog.module.css';
-
-import type { PortableTextBlock } from '@portabletext/types';
+import { PortableText } from "@portabletext/react";
+import { client } from "@/sanity/lib/client";
+import styles from "@/styles/Blog.module.css";
+import type { PortableTextBlock } from "@portabletext/types";
 
 type BlogPost = {
   _id: string;
@@ -14,14 +11,16 @@ type BlogPost = {
   content?: PortableTextBlock[];
 };
 
+// ✅ params is now a Promise in Next.js 15+
 interface BlogPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export default async function BlogPostPage({ params }: BlogPageProps) {
-  const slug = params.slug;
+  // ✅ unwrap params
+  const { slug } = await params;
 
-  // Fetch single blog post by slug
+  // Fetch the single blog post by slug
   const query = `*[_type=="blog" && slug.current == $slug][0]{
     _id,
     title,
