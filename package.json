@@ -10,6 +10,7 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@portabletext/react": "^4.0.3",
+    "@sanity/image-url": "^1.2.0",
     "@tailwindcss/vite": "^4.1.13",
     "framer-motion": "^12.23.22",
     "googleapis": "^160.0.0",

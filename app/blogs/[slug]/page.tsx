@@ -1,5 +1,6 @@
+// app/blogs/[slug]/page.tsx (Server Component)
 import { PortableText } from "@portabletext/react";
-import { client } from "@/sanity/lib/client";
+import { client, urlFor } from "@/sanity/lib/client";
 import styles from "@/styles/Blog.module.css";
 import type { PortableTextBlock } from "@portabletext/types";
 
@@ -9,24 +10,27 @@ type BlogPost = {
   slug: { current: string };
   publishedAt?: string;
   content?: PortableTextBlock[];
+  coverImage?: { asset: any; alt?: string };
+  author?: string;
 };
 
-// ✅ params is now a Promise in Next.js 15+
 interface BlogPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export default async function BlogPostPage({ params }: BlogPageProps) {
-  // ✅ unwrap params
+  // ✅ unwrap params (server side, runs once)
   const { slug } = await params;
 
-  // Fetch the single blog post by slug
+  // ✅ fetch on server
   const query = `*[_type=="blog" && slug.current == $slug][0]{
     _id,
     title,
     slug,
     publishedAt,
-    content
+    content,
+    coverImage,
+    author
   }`;
 
   const post: BlogPost | null = await client.fetch(query, { slug });
@@ -39,11 +43,26 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
     <main className={styles.blogContainer}>
       <article className={styles.blogPost}>
         <h1 className={styles.blogTitle}>{post.title}</h1>
-        {post.publishedAt && (
-          <p className={styles.blogDate}>
-            {new Date(post.publishedAt).toLocaleDateString()}
-          </p>
+
+        {/* Cover Image + Author/Date */}
+        {post.coverImage && (
+          <div className={styles.coverImageWrapper}>
+            <img
+              src={urlFor(post.coverImage).width(800).url()}
+              alt={post.title}
+              className={styles.blogCoverImage}
+            />
+            <div className={styles.coverInfo}>
+              <span>{post.author || "Unknown Author"}</span>
+              <span>•</span>
+              {post.publishedAt && (
+                <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
+              )}
+            </div>
+          </div>
         )}
+
+        {/* Blog Content */}
         {post.content ? (
           <PortableText value={post.content} />
         ) : (
